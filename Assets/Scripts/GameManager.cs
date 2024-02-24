@@ -1,16 +1,21 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     public LoseWindow LosePanel;
     
     public static GameManager instance;
+
+    public AudioManager AudioManager;
+    
     private void Start()
     {
         instance = this; 
+        AudioManager.PlayButton(true);
+        AudioManager.PlayOpenWindow(true);
+        AudioManager.PlayBg(true);
     }
 
     public void Lose()
@@ -20,10 +25,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
     
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void RestartGame() {
         Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadScene(int sceneNumber)

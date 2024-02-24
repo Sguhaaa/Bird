@@ -23,21 +23,16 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2();
             rb.AddForce(transform.up*jumpForce,ForceMode2D.Impulse);
             birdAnimation.StartRotation(); 
-            
+            GameManager.instance.AudioManager.PlayJump(true);
         }
         birdAnimation.ApplyRotation(rb.velocity.y); 
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("PipePart"))
-         {
-            GameManager.instance.Lose();
-        }
-        else if (other.gameObject.CompareTag("Floor"))
-        {
-            GameManager.instance.Lose();
-        }
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (!other.gameObject.CompareTag("PipePart") && !other.gameObject.CompareTag("Floor")) return;
+        
+        GameManager.instance.AudioManager.PlayHit(true);
+        GameManager.instance.Lose();
     }
     
 }

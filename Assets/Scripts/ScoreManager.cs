@@ -9,7 +9,7 @@ namespace DefaultNamespace
     {
         public static ScoreManager Instance { get; set; }
         [SerializeField] private TextMeshProUGUI scoreText;
-        public int score { get; set; }
+        public int Score { get; set; }
 
         private void Start()
         {
@@ -18,8 +18,8 @@ namespace DefaultNamespace
 
         public void SetScore(int score)
         {
-            this.score += score;
-            scoreText.text = this.score.ToString();
+            Score += score;
+            scoreText.text = Score.ToString();
         }
 
     }

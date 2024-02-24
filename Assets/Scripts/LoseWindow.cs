@@ -8,7 +8,7 @@ public class LoseWindow : MonoBehaviour
         
         public void PlayerLose()
         {
-            int score = ScoreManager.Instance.score;
+            int score = ScoreManager.Instance.Score;
             scoreText.text = score.ToString();
             int bestScore = PlayerPrefs.GetInt("BestScore");
             if (score > bestScore)
