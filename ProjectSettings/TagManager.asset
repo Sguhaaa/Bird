@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PipePart
   - Floor
+  - NoReboot
   layers:
   - Default
   - TransparentFX
